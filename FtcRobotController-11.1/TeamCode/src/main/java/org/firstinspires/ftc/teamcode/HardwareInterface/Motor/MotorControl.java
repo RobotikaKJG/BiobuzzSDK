@@ -19,6 +19,7 @@ public class MotorControl {
         public static final String outtake1 = "outtake1Motor";
         public static final String intake = "intakeMotor";
         public static final String outtake2 = "outtake2Motor";
+        public static final String transfer = "transfer";
     }
 
     private final HardwareMap hardwareMap;
@@ -54,6 +55,7 @@ public class MotorControl {
                 hardwareMap.get(DcMotorEx.class, MotorNames.outtake1),
                 hardwareMap.get(DcMotorEx.class, MotorNames.intake),
                 hardwareMap.get(DcMotorEx.class, MotorNames.outtake2),
+                hardwareMap.get(DcMotorEx.class, MotorNames.transfer),
         };
 
         setMotorProperties();
@@ -255,24 +257,26 @@ public class MotorControl {
         return a.p == b.p && a.i == b.i && a.d == b.d && a.f == b.f;
     }
 
-    private String motorName(int motorIndex) {
-        switch (motorIndex) {
-            case MotorConstants.frontLeft:
-                return MotorNames.frontLeft;
-            case MotorConstants.backLeft:
-                return MotorNames.backLeft;
-            case MotorConstants.frontRight:
-                return MotorNames.frontRight;
-            case MotorConstants.backRight:
-                return MotorNames.backRight;
-            case MotorConstants.outtake1:
-                return MotorNames.outtake1;
-            case MotorConstants.intake:
-                return MotorNames.intake;
-            case MotorConstants.outtake2:
-                return MotorNames.outtake2;
-            default:
-                return "unknownMotor" + motorIndex;
-        }
-    }
+//    private String motorName(int motorIndex) {
+//        switch (motorIndex) {
+//            case MotorConstants.frontLeft:
+//                return MotorNames.frontLeft;
+//            case MotorConstants.backLeft:
+//                return MotorNames.backLeft;
+//            case MotorConstants.frontRight:
+//                return MotorNames.frontRight;
+//            case MotorConstants.backRight:
+//                return MotorNames.backRight;
+//            case MotorConstants.outtake1:
+//                return MotorNames.outtake1;
+//            case MotorConstants.intake:
+//                return MotorNames.intake;
+//            case MotorConstants.outtake2:
+//                return MotorNames.outtake2;
+//            case MotorConstants.transfer:
+//                return MotorNames.transfer;
+//            default:
+//                return "unknownMotor" + motorIndex;
+//        }
+//    }
 }

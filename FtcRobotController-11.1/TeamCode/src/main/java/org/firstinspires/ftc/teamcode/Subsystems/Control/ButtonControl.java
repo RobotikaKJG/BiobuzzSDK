@@ -17,6 +17,7 @@ import org.firstinspires.ftc.teamcode.HardwareInterface.Sensor.SensorControl;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightTrigger.RightTriggerLogic;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightBumper.RightBumperLogic;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Square.SquareLogic;
+import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Cross.CrossLogic;
 
 
 public class ButtonControl {
@@ -26,6 +27,7 @@ public class ButtonControl {
 //    private final LeftTriggerLogic leftTriggerLogic = new LeftTriggerLogic();
 //    private final LeftBumperLogic leftBumperLogic;
     private final SquareLogic squareLogic = new SquareLogic();
+    private final CrossLogic crossLogic = new CrossLogic();
 //    private final CircleLogic circleLogic = new CircleLogic();
 //    private final DpadRightLogic dpadRightLogic = new DpadRightLogic();
 //    private final DpadDownLogic dpadDownLogic = new DpadDownLogic();
@@ -62,6 +64,9 @@ public class ButtonControl {
 
         if(edgeDetection.rising(GamepadIndexValues.square))
             squareLogic.update();
+
+        if(edgeDetection.rising(GamepadIndexValues.cross))
+            crossLogic.update();
 
 //        if(edgeDetection.rising(GamepadIndexValues.circle))
 //            circleLogic.update();

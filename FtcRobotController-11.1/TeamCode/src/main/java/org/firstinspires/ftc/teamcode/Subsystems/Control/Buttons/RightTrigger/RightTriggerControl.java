@@ -4,6 +4,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Control.ButtonStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeMotor.IntakeMotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.LockServo.LockServoStates;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake.TransferMotor.TransferMotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeStates;
 
 public class RightTriggerControl {
@@ -14,7 +15,7 @@ public class RightTriggerControl {
                 break;
             case stop:
                 IntakeStates.setIntakeMotorState(IntakeMotorStates.idle);
-                break;
+                  break;
             case idle:
                 break;
         }
