@@ -8,21 +8,21 @@ package org.firstinspires.ftc.teamcode.Subsystems.Control;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Circle.CircleStates;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.DpadRight.DpadRightStates;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.DpadUp.DpadUpStates;
-//import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftBumper.LeftBumperStates;
+import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftBumper.LeftBumperStates;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftTrigger.LeftTriggerStates;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftTrigger.LeftTriggerStates;
-import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Cross.CrossStates;
+//import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Cross.CrossStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightTrigger.RightTriggerStates;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightBumper.RightBumperStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Square.SquareStates;
 
 public class ButtonStates {
-//    private static LeftBumperStates leftBumperStates = LeftBumperStates.idle;
+    private static LeftBumperStates leftBumperStates = LeftBumperStates.idle;
 //    private static LeftTriggerStates leftTriggerStates = LeftTriggerStates.idle;
 //    private static RightBumperStates rightBumperStates = RightBumperStates.idle;
     private static RightTriggerStates rightTriggerStates = RightTriggerStates.idle;
     private static SquareStates squareStates = SquareStates.idle;
-    private static CrossStates crossStates = CrossStates.idle;
+//    private static CrossStates crossStates = CrossStates.idle;
 //    private static CircleStates circleStates = CircleStates.idle;
 //    private static DpadRightStates dpadRightStates = DpadRightStates.idle;
 //    private static DpadDownStates dpadDownStates = DpadDownStates.idle;
@@ -30,12 +30,12 @@ public class ButtonStates {
 //    private static DpadLeftStates dpadLeftStates = DpadLeftStates.idle;
 
     public static void setInitialStates(){
-//        leftBumperStates = LeftBumperStates.idle;
+        leftBumperStates = LeftBumperStates.idle;
 //        leftTriggerStates = LeftTriggerStates.idle;
 //        rightBumperStates = RightBumperStates.idle;
         rightTriggerStates = RightTriggerStates.idle;
         squareStates = SquareStates.idle;
-        crossStates = CrossStates.idle;
+//        crossStates = CrossStates.idle;
 //        circleStates = CircleStates.idle;
 //        dpadRightStates = DpadRightStates.idle;
 //        dpadDownStates = DpadDownStates.idle;
@@ -43,13 +43,13 @@ public class ButtonStates {
 //        dpadLeftStates = DpadLeftStates.idle;
     }
 
-//    public static LeftBumperStates getLeftBumperState() {
-//        return  leftBumperStates;
-//    }
-//
-//    public static void setLeftBumperState(LeftBumperStates state) {
-//        leftBumperStates = state;
-//    }
+    public static LeftBumperStates getLeftBumperState() {
+        return  leftBumperStates;
+    }
+
+    public static void setLeftBumperState(LeftBumperStates state) {
+        leftBumperStates = state;
+    }
 //
 //    public static LeftTriggerStates getLeftTriggerState() {
 //        return leftTriggerStates;
@@ -83,11 +83,11 @@ public class ButtonStates {
         squareStates = state;
     }
 
-    public static CrossStates getCrossState() {
-        return crossStates;
-    }
-
-    public static void setCrossState(CrossStates state) { crossStates = state;}
+//    public static CrossStates getCrossState() {
+//        return crossStates;
+//    }
+//
+//    public static void setCrossState(CrossStates state) { crossStates = state;}
 
 //    public static CircleStates getCircleState() {
 //        return circleStates;
