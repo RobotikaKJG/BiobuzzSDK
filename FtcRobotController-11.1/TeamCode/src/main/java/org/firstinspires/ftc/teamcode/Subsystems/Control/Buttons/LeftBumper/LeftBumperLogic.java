@@ -20,7 +20,7 @@ public class LeftBumperLogic {
     }
 
     private boolean resetPos() {
-        if (IntakeStates.getLockServoState() != LockServoStates.idle) return false;
+        if (IntakeStates.getLockServoState() == LockServoStates.unlock) return false;
 
         ButtonStates.setLeftBumperState(LeftBumperStates.activate);
         setPos();

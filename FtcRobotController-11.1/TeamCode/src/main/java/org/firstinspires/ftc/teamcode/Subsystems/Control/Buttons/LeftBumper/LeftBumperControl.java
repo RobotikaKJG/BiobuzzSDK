@@ -13,7 +13,7 @@ public class LeftBumperControl {
     public void update() {
         switch (ButtonStates.getLeftBumperState()) {
             case activate:
-                activate();
+                IntakeStates.setLockServoState(LockServoStates.unlock);
                 IntakeStates.setIntakeMotorState(IntakeMotorStates.forward);
                 IntakeStates.setTransferMotorState(TransferMotorStates.forward);
                 IntakeStates.setTransfer2MotorState(Transfer2MotorStates.forward);
@@ -23,13 +23,9 @@ public class LeftBumperControl {
                 IntakeStates.setIntakeMotorState(IntakeMotorStates.idle);
                 IntakeStates.setTransferMotorState(TransferMotorStates.idle);
                 IntakeStates.setTransfer2MotorState(Transfer2MotorStates.idle);
-                    break;
+                break;
             case idle:
                 break;
         }
-    }
-
-    private void activate() {
-        IntakeStates.setLockServoState(LockServoStates.unlock);
     }
 }
