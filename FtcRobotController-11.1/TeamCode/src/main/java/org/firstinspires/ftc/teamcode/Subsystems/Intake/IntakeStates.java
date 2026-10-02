@@ -1,23 +1,24 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Intake;
 
+import org.firstinspires.ftc.teamcode.Main.GlobalVariables;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeMotor.IntakeMotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.LockServo.LockServoStates;
-import org.firstinspires.ftc.teamcode.Subsystems.Intake.Transfer2Motor.Transfer2MotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.TransferMotor.TransferMotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.SubsystemState;
+import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeMotor.OuttakeMotorStates;
 
 public class IntakeStates {
     private static SubsystemState intakeState = SubsystemState.Idle;
     private static IntakeMotorStates intakeMotorState = IntakeMotorStates.idle;
     private static LockServoStates lockServoState = LockServoStates.idle;
     private static TransferMotorStates transferMotorState = TransferMotorStates.idle;
-    private static Transfer2MotorStates transfer2MotorState = Transfer2MotorStates.idle;
+
+
     public static void setInitialStates() {
         intakeState = SubsystemState.Idle;
         intakeMotorState = IntakeMotorStates.idle;
         lockServoState = LockServoStates.lock;
         transferMotorState = TransferMotorStates.idle;
-        transfer2MotorState = Transfer2MotorStates.idle;
     }
 
     public static SubsystemState getIntakeState() {
@@ -54,10 +55,4 @@ public class IntakeStates {
         return transferMotorState;
     }
 
-    public static void setTransfer2MotorState(Transfer2MotorStates state) {
-        transfer2MotorState = state;
-    }
-    public static Transfer2MotorStates getTransfer2MotorState() {
-        return transfer2MotorState;
-    }
 }

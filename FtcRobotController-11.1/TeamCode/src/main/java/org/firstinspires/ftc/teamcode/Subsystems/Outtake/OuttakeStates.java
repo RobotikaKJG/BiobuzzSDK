@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Outtake;
 
+import org.firstinspires.ftc.teamcode.Main.GlobalVariables;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeMotor.OuttakeMotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.SubsystemState;
 
@@ -12,6 +13,7 @@ public class OuttakeStates {
         outtakeState = SubsystemState.Idle;
         outtakeMotorState = OuttakeMotorStates.idle;
         turretTrackingEnabled = true;
+        if(!GlobalVariables.isAutonomous) outtakeMotorState = OuttakeMotorStates.forwardClose;
     }
 
     public static SubsystemState getOuttakeState() {

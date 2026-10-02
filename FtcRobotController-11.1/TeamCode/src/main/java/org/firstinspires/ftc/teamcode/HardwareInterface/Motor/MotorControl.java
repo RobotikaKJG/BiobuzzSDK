@@ -18,10 +18,10 @@ public class MotorControl {
         public static final String backRight = "backRightMotor";
         public static final String outtake1 = "outtake1Motor";
         public static final String intake = "intakeMotor";
-//        public static final String outtake2 = "outtake2Motor";
+        public static final String outtake2 = "outtake2Motor";
         public static final String transfer = "transfer";
 
-        public static final String transfer2 = "transfer2";
+//        public static final String transfer2 = "transfer2";
     }
 
     private final HardwareMap hardwareMap;
@@ -56,9 +56,9 @@ public class MotorControl {
                 hardwareMap.get(DcMotorEx.class, MotorNames.backRight),
                 hardwareMap.get(DcMotorEx.class, MotorNames.outtake1),
                 hardwareMap.get(DcMotorEx.class, MotorNames.intake),
-//                hardwareMap.get(DcMotorEx.class, MotorNames.outtake2),
+                hardwareMap.get(DcMotorEx.class, MotorNames.outtake2),
                 hardwareMap.get(DcMotorEx.class, MotorNames.transfer),
-                hardwareMap.get(DcMotorEx.class, MotorNames.transfer2),
+//                hardwareMap.get(DcMotorEx.class, MotorNames.transfer2),
         };
 
         setMotorProperties();
@@ -67,14 +67,14 @@ public class MotorControl {
     private void setMotorProperties() {
         motors[MotorConstants.frontLeft].setDirection(DcMotorSimple.Direction.REVERSE);
         motors[MotorConstants.backLeft].setDirection(DcMotorSimple.Direction.REVERSE);
-        motors[MotorConstants.outtake1].setDirection(DcMotorSimple.Direction.REVERSE);
-//        motors[MotorConstants.outtake2].setDirection(DcMotorSimple.Direction.FORWARD);
+        motors[MotorConstants.outtake1].setDirection(DcMotorSimple.Direction.FORWARD);
+        motors[MotorConstants.outtake2].setDirection(DcMotorSimple.Direction.REVERSE);
         setZeroPowerBehavior(MotorConstants.all, DcMotor.ZeroPowerBehavior.BRAKE);
-//        setZeroPowerBehavior(MotorConstants.outtake2, DcMotor.ZeroPowerBehavior.FLOAT);
+        setZeroPowerBehavior(MotorConstants.outtake2, DcMotor.ZeroPowerBehavior.FLOAT);
         setZeroPowerBehavior(MotorConstants.outtake1, DcMotor.ZeroPowerBehavior.FLOAT);
         setMotorMode(MotorConstants.all, DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         setMotorMode(MotorConstants.all, DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        setMotorMode(MotorConstants.outtake1, DcMotor.RunMode.RUN_USING_ENCODER);
+//        setMotorMode(MotorConstants.outtake1, DcMotor.RunMode.RUN_USING_ENCODER);
 //        setMotorMode(MotorConstants.outtake2, DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
