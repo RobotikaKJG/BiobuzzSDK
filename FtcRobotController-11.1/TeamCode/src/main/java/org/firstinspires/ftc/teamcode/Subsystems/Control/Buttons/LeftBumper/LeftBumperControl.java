@@ -14,15 +14,12 @@ public class LeftBumperControl {
         switch (ButtonStates.getLeftBumperState()) {
             case activate:
                 IntakeStates.setLockServoState(LockServoStates.unlock);
-                IntakeStates.setIntakeMotorState(IntakeMotorStates.forward);
-                IntakeStates.setTransferMotorState(TransferMotorStates.forward);
                 break;
             case stop:
                 IntakeStates.setLockServoState(LockServoStates.lock);
-                IntakeStates.setIntakeMotorState(IntakeMotorStates.idle);
-                IntakeStates.setTransferMotorState(TransferMotorStates.idle);
                 break;
             case idle:
+                IntakeStates.setLockServoState(LockServoStates.lock);
                 break;
         }
     }
