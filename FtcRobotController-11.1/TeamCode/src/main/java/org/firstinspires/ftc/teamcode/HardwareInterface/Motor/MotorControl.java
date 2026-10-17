@@ -72,6 +72,7 @@ public class MotorControl {
         motors[MotorConstants.transfer].setDirection(DcMotorSimple.Direction.REVERSE);
         motors[MotorConstants.outtake1].setDirection(DcMotorSimple.Direction.REVERSE);
         motors[MotorConstants.outtake2].setDirection(DcMotorSimple.Direction.FORWARD);
+        motors[MotorConstants.intake].setDirection(DcMotorSimple.Direction.FORWARD);
         setZeroPowerBehavior(MotorConstants.all, DcMotor.ZeroPowerBehavior.BRAKE);
         setZeroPowerBehavior(MotorConstants.outtake2, DcMotor.ZeroPowerBehavior.FLOAT);
         setZeroPowerBehavior(MotorConstants.outtake1, DcMotor.ZeroPowerBehavior.FLOAT);
