@@ -34,10 +34,10 @@ public class OuttakeTuningOpMode extends LinearOpMode {
 
         telemetry.addLine("Use Gamepad 1 to tune values:");
         telemetry.addLine("DPAD UP/DOWN: Target RPM (Hold)");
-        telemetry.addLine("Cross(A)/Circle(B): P coefficient (Click)");
-        telemetry.addLine("Square(X)/Triangle(Y): I coefficient (Click)");
-        telemetry.addLine("LB/RB: D coefficient (Click)");
-        telemetry.addLine("LT/RT: F coefficient (Hold)");
+        telemetry.addLine("Cross/Circle: P coefficient (Click)");
+        telemetry.addLine("Square/Triangle: I coefficient (Click)");
+        telemetry.addLine("L1/R1: D coefficient (Click)");
+        telemetry.addLine("L2/R2: F coefficient (Hold)");
         telemetry.update();
 
         waitForStart();

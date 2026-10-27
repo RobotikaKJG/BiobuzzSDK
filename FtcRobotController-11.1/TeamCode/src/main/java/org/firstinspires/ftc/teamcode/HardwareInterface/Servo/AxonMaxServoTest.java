@@ -7,31 +7,35 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp(name = "AxonMaxServoTest", group = "TeleOp")
 public class AxonMaxServoTest extends LinearOpMode {
 
-    private Servo axonServoOne;
-    private Servo axonServoTwo;
+    private Servo turretServo1;
+    private Servo turretServo2;
 
     @Override
     public void runOpMode() {
-        axonServoOne = hardwareMap.get(Servo.class, "axonServoOne");
-        axonServoTwo = hardwareMap.get(Servo.class, "axonServoTwo");
+        turretServo1 = hardwareMap.get(Servo.class, "turretServo1");
+        turretServo2 = hardwareMap.get(Servo.class, "turretServo2");
 
-        // Map 150 degrees to servo position (assuming 0-300 deg -> 0.0-1.0)
-        double degrees = 150.0;
-        double position = degrees / 255.0;
-
-        telemetry.addLine("Press A to move servo to 150 degrees");
+        telemetry.addLine("Servo Control Ready (PS5)");
+        telemetry.addLine("Square: 0.0 | Circle: 1.0 | Cross: 0.5");
         telemetry.update();
 
         waitForStart();
 
         while (opModeIsActive()) {
-            if (gamepad1.a) {
-                axonServoOne.setPosition(position);
-                axonServoTwo.setPosition(position);
-                telemetry.addData("Commanded Position (deg)", degrees);
-                telemetry.addData("Set Position (0.0-1.0)", position);
-                telemetry.update();
+            if (gamepad1.square) {
+                turretServo1.setPosition(0.0);
+                turretServo2.setPosition(1.0);
+            } else if (gamepad1.circle) {
+                turretServo1.setPosition(1.0);
+                turretServo2.setPosition(0.0);
+            } else if (gamepad1.cross) {
+                turretServo1.setPosition(0.5);
+                turretServo2.setPosition(0.5);
             }
+
+            telemetry.addData("Servo 1 Position", turretServo1.getPosition());
+            telemetry.addData("Servo 2 Position", turretServo2.getPosition());
+            telemetry.update();
         }
     }
 }

@@ -34,7 +34,7 @@ public class ManualTrippleServoControl extends LinearOpMode {
             currentGamepad1.copy(gamepad1);
             if(gamepad1.triangle) break;
             dependencies.edgeDetection.refreshGamepadIndex(currentGamepad1,prevGamepad1);
-            telemetry.addLine("Press left bumper for decrease, press right bumper for increase");
+            telemetry.addLine("Press L1 for decrease, press R1 for increase");
             telemetry.addLine("Press square to cycle through servos");
             if(dependencies.edgeDetection.rising(GamepadIndexValues.leftBumper))
             {

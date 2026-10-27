@@ -63,8 +63,8 @@ public class ManualMotorControl extends LinearOpMode {
             dependencies.motorControl.setMotors(MotorConstants.all);
 
             telemetry.addLine("Press square to cycle through motors");
-            telemetry.addLine("Hold right bumper for +0.2 power");
-            telemetry.addLine("Hold left bumper for -0.2 power");
+            telemetry.addLine("Hold R1 for +0.2 power");
+            telemetry.addLine("Hold L1 for -0.2 power");
             telemetry.addLine("Press triangle to stop");
             telemetry.addLine();
             telemetry.addLine("Currently selected motor:");

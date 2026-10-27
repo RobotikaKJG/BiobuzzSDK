@@ -34,7 +34,7 @@ public class ManualCRAxonTest extends LinearOpMode {
             currentGamepad1.copy(gamepad1);
             if(gamepad1.triangle) break;
             dependencies.edgeDetection.refreshGamepadIndex(currentGamepad1,prevGamepad1);
-            telemetry.addLine("Press left bumper to start CR servo");
+            telemetry.addLine("Press L1 to start CR servo");
 
             double power = 0;
 

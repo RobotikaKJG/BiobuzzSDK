@@ -78,20 +78,6 @@ public class TurretServoControl {
         servoControl.setTurretServosPos(targetServoPos);
     }
 
-    /**
-     * Clamp the aim angle to the reachable window [turretLimitRight, turretLimitLeft].
-     * When the target is in the dead zone behind the turret, hold the angularly
-     * NEARER limit — re-evaluated every loop, with a hysteresis band around the
-     * dead-zone bisector so noise near the bisector can't make the held limit
-     * flip-flop (the original "stuck + jitter" full-range slam).
-     *
-     * Re-evaluating each loop (instead of latching the entry limit until the
-     * target re-enters the window) is what fixes the limit-to-limit overshoot:
-     * as the goal sweeps behind the robot, the held limit switches ONCE at the
-     * bisector, so the turret eases onto the correct limit while the goal is
-     * still behind — instead of holding the wrong limit across the whole rear
-     * sweep and then slamming across on exit.
-     */
     private double resolveTargetWithinLimits(double targetDeg) {
         double left = OuttakeConstants.turretLimitLeft;
         double right = OuttakeConstants.turretLimitRight;
@@ -128,12 +114,6 @@ public class TurretServoControl {
         return deadZoneLimitDeg;
     }
 
-    /**
-     * Log a dead-zone latch transition (engage / limit switch / release) with the
-     * raw aim target and the pose that produced it. These events are edge-triggered
-     * and rare, so logging every one is cheap; pull with {@code adb logcat} /
-     * {@code deploy.sh logs}. A logging failure must never disturb aiming.
-     */
     private void logLatchEvent(String event, double rawTargetDeg, double resolvedDeg) {
         try {
             Pose pose = sensorControl.getLocalizerPose();
@@ -151,11 +131,6 @@ public class TurretServoControl {
         }
     }
 
-    /**
-     * Rate-limit the commanded servo position to turretServoSlewPerSec so a target
-     * jump (dead-zone exit, pose correction) becomes a controlled sweep instead of
-     * a full-speed slam of the ganged servos.
-     */
     private double slewLimit(double desiredPos) {
         long now = System.nanoTime();
         if (Double.isNaN(lastCommandedPos)) {

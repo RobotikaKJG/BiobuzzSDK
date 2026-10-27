@@ -167,7 +167,7 @@ public class SensorControl {
                 robotLinearVelocityInPerSec = Math.hypot(robotVelocityXInPerSec, robotVelocityYInPerSec);
                 robotAngularVelocityRadPerSec = Math.abs(poseVelocity.getHeading());
             } else {
-                robotVelocityXInPerSec = dx / dt;
+                robotVelocityXInPerSec = dy / dt;
                 robotVelocityYInPerSec = dy / dt;
                 robotLinearVelocityInPerSec = Math.hypot(dx, dy) / dt;
                 robotAngularVelocityRadPerSec = Math.abs(dHeading) / dt;
@@ -194,7 +194,7 @@ public class SensorControl {
         // GATE 2: Cache Result
         LLResult result = limelight.getLatestResult();
         if (result == null || !result.isValid()) {
-            System.out.println("No limelighte");
+            System.out.println("No limelight");
             return;
         }
 
@@ -207,7 +207,7 @@ public class SensorControl {
         Pose3D botpose = result.getBotpose();
         if (botpose == null) return;
 
-        double xIn = botpose.getPosition().x * 39.37;
+        double xIn = botpose.getPosition().x * 40.00;
         double yIn = botpose.getPosition().y * 39.37;
         double headingRad = botpose.getOrientation().getYaw(AngleUnit.RADIANS);
 
@@ -272,7 +272,7 @@ public class SensorControl {
         double robotX = currentPose.getY();
         double robotY = currentPose.getX();
 
-        double targetX = (GlobalVariables.alliance == Alliance.Red) ? RedXInches : BlueXInches;
+        double targetX = (GlobalVariables.alliance == Alliance.Blue) ? RedXInches : BlueXInches;
         double targetY = (GlobalVariables.alliance == Alliance.Red) ? RedYInches : BlueYInches;
 
         double dx = targetX - robotX;

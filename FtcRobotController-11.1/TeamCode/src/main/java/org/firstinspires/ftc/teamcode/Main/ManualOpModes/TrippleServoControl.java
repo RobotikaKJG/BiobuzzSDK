@@ -33,7 +33,7 @@ public class TrippleServoControl extends LinearOpMode {
             currentGamepad1.copy(gamepad1);
             if(gamepad1.triangle) break;
             dependencies.edgeDetection.refreshGamepadIndex(currentGamepad1,prevGamepad1);
-            telemetry.addLine("Press left bumper for min pos, press right bumper for max pos");
+            telemetry.addLine("Press L1 for min pos, press R1 for max pos");
             telemetry.addLine("Press square to cycle through servos");
             if(dependencies.edgeDetection.rising(GamepadIndexValues.leftBumper))
             {

@@ -102,7 +102,7 @@ public class ShooterDistanceTuningTeleOp extends LinearOpMode {
                 // 5. Specialized Tuning Telemetry
                 long nowMs = System.currentTimeMillis();
                 if (nowMs - lastTelemetryMs >= TELEMETRY_INTERVAL_MS) {
-                    telemetry.addLine("--- SHOOTER TUNING (Triangle +20 / Cross -20 ticks/s) ---");
+                    telemetry.addLine("--- SHOOTER TUNING (△ +20 / ✖ -20 ticks/s) ---");
                     telemetry.addData("Distance from Target", "%.2f inches", dependencies.sensorControl.getDistanceFromLocalizer());
                     telemetry.addData("Target Base RPM", "%.0f", GlobalVariables.outtakeTargetSpeed);
                     telemetry.addData("Manual RPM Offset", "%.0f", GlobalVariables.rpmOffset);
