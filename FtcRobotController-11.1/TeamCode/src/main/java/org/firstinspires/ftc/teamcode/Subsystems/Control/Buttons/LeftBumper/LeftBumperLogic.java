@@ -14,6 +14,7 @@ public class LeftBumperLogic {
         stopServoLock();
     }
 
+
     private void setPos(){
         LeftBumperControl.update();
         ButtonStates.setLeftBumperState(LeftBumperStates.idle);
