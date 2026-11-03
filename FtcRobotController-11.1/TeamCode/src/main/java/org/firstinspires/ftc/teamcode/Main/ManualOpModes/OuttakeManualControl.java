@@ -42,12 +42,12 @@ public class OuttakeManualControl extends LinearOpMode {
 
                 // Speed Adjustment
                 if (gamepad1.dpad_up && !lastUp) {
-                    targetRPM += 50;
+                    targetRPM += 25;
                 }
                 lastUp = gamepad1.dpad_up;
 
                 if (gamepad1.dpad_down && !lastDown) {
-                    targetRPM -= 50;
+                    targetRPM -= 25;
                 }
                 lastDown = gamepad1.dpad_down;
 
