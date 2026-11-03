@@ -1,5 +1,5 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Outtake;
 
 public class OuttakeConstants {
-    public static double outtakeSpeed = 1000;
+    public static double outtakeSpeed = 1100;
 }
