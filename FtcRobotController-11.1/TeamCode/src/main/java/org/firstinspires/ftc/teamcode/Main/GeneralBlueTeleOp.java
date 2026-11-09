@@ -101,8 +101,11 @@ public class GeneralBlueTeleOp extends LinearOpMode {
                         telemetry.addData("Control lastErr", controlThread.getErrorCount() + "x " + controlThread.getLastError());
                     if (driveErrors > 0)
                         telemetry.addData("Drive errors", driveErrors);
+                    telemetry.addData("OutttakeSpeed", dependencies.motorControl.getMotorVelocity(MotorConstants.outtake1));
+
                     telemetry.update();
                     lastTelemetryMs = nowMs;
+
                 }
 
                 long workMs = (System.nanoTime() - startNs) / 1_000_000L;

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Intake;
 
 import org.firstinspires.ftc.teamcode.Main.GlobalVariables;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake.FlowerServo.FlowerServoStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeMotor.IntakeMotorStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.LockServo.LockServoStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.TransferMotor.TransferMotorStates;
@@ -12,6 +13,7 @@ public class IntakeStates {
     private static IntakeMotorStates intakeMotorState = IntakeMotorStates.idle;
     private static LockServoStates lockServoState = LockServoStates.idle;
     private static TransferMotorStates transferMotorState = TransferMotorStates.idle;
+    private static FlowerServoStates flowerServoState = FlowerServoStates.idle;
 
 
     public static void setInitialStates() {
@@ -19,6 +21,7 @@ public class IntakeStates {
         intakeMotorState = IntakeMotorStates.idle;
         lockServoState = LockServoStates.lock;
         transferMotorState = TransferMotorStates.idle;
+        flowerServoState = FlowerServoStates.idle;
     }
 
     public static SubsystemState getIntakeState() {
@@ -53,6 +56,14 @@ public class IntakeStates {
     }
     public static TransferMotorStates getTransferMotorState() {
         return transferMotorState;
+    }
+
+    public static FlowerServoStates getFlowerServoState() {
+        return flowerServoState;
+    }
+
+    public static void setFlowerServoState(FlowerServoStates state) {
+        flowerServoState = state;
     }
 
 }

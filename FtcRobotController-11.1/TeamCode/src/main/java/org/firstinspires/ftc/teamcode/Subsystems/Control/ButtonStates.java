@@ -13,13 +13,13 @@ import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftBumper.Left
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftTrigger.LeftTriggerStates;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Cross.CrossStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightTrigger.RightTriggerStates;
-//import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightBumper.RightBumperStates;
+import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightBumper.RightBumperStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Square.SquareStates;
 
 public class ButtonStates {
     private static LeftBumperStates leftBumperStates = LeftBumperStates.idle;
 //    private static LeftTriggerStates leftTriggerStates = LeftTriggerStates.idle;
-//    private static RightBumperStates rightBumperStates = RightBumperStates.idle;
+    private static RightBumperStates rightBumperStates = RightBumperStates.idle;
     private static RightTriggerStates rightTriggerStates = RightTriggerStates.idle;
     private static SquareStates squareStates = SquareStates.idle;
 //    private static CrossStates crossStates = CrossStates.idle;
@@ -32,7 +32,7 @@ public class ButtonStates {
     public static void setInitialStates(){
         leftBumperStates = LeftBumperStates.idle;
 //        leftTriggerStates = LeftTriggerStates.idle;
-//        rightBumperStates = RightBumperStates.idle;
+        rightBumperStates = RightBumperStates.idle;
         rightTriggerStates = RightTriggerStates.idle;
         squareStates = SquareStates.idle;
 //        crossStates = CrossStates.idle;
@@ -58,14 +58,14 @@ public class ButtonStates {
 //    public static void setLeftTriggerState(LeftTriggerStates state) {
 //        leftTriggerStates = state;
 //    }
-//
-//    public static RightBumperStates getRightBumperState() {
-//        return rightBumperStates;
-//    }
-//
-//    public static void setRightBumperState(RightBumperStates state) {
-//        rightBumperStates = state;
-//    }
+
+    public static RightBumperStates getRightBumperState() {
+        return rightBumperStates;
+    }
+
+    public static void setRightBumperState(RightBumperStates state) {
+        rightBumperStates = state;
+    }
 
     public static RightTriggerStates getRightTriggerState() {
         return rightTriggerStates;

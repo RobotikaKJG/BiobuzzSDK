@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftBumper.Left
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftTrigger.LeftTriggerLogic;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.LeftTrigger.LeftTriggerLogic;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightTrigger.RightTriggerLogic;
-//import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightBumper.RightBumperLogic;
+import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.RightBumper.RightBumperLogic;
 import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Square.SquareLogic;
 //import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Cross.CrossLogic;
 
@@ -23,7 +23,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Control.Buttons.Square.SquareLo
 public class ButtonControl {
     private final EdgeDetection edgeDetection;
     private final RightTriggerLogic rightTriggerLogic = new RightTriggerLogic();
-//    private final RightBumperLogic rightBumperLogic = new RightBumperLogic();
+    private final RightBumperLogic rightBumperLogic = new RightBumperLogic();
 //    private final LeftTriggerLogic leftTriggerLogic = new LeftTriggerLogic();
     private final LeftBumperLogic leftBumperLogic = new LeftBumperLogic();
     private final SquareLogic squareLogic = new SquareLogic();
@@ -53,8 +53,8 @@ public class ButtonControl {
         if(edgeDetection.rising(GamepadIndexValues.rightTrigger))
             rightTriggerLogic.update();
 
-//        if(edgeDetection.rising(GamepadIndexValues.rightBumper))
-//            rightBumperLogic.update();
+        if(edgeDetection.rising(GamepadIndexValues.rightBumper))
+            rightBumperLogic.update();
 //
 //        if(edgeDetection.rising(GamepadIndexValues.leftTrigger))
 //            leftTriggerLogic.update();

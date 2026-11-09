@@ -18,6 +18,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Drivebase.DrivebaseController;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeControl;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeMotor.IntakeMotorControl;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.LockServo.LockServoControl;
+import org.firstinspires.ftc.teamcode.Subsystems.Intake.FlowerServo.FlowerServoControl;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.TransferMotor.TransferMotorControl;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeControl;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeMotor.OuttakeMotorControl;
@@ -77,7 +78,7 @@ public class Dependencies {
     }
 
     public IntakeControl createIntakeControl() {
-        return new IntakeControl(createIntakeMotorControl(), createLockServoControl(), createTransferMotorControl());
+        return new IntakeControl(createIntakeMotorControl(), createLockServoControl(), createTransferMotorControl(), createFlowerServoControl());
     }
 
     private IntakeMotorControl createIntakeMotorControl() {
@@ -91,5 +92,7 @@ public class Dependencies {
 
     private LockServoControl createLockServoControl() {
         return new LockServoControl(servoControl);
+    }
+    private FlowerServoControl createFlowerServoControl() {return new FlowerServoControl(servoControl);
     }
 }
