@@ -150,7 +150,7 @@ class LocalizationTest extends OpMode {
     /** This initializes the PoseUpdater, the drive motors, and the Panels telemetry. */
     @Override
     public void init_loop() {
-        if (gamepad1.a || gamepad2.a) {
+        if (gamepad1.aWasPressed() || gamepad2.aWasPressed()) {
             debugStringEnabled = !debugStringEnabled;
         }
 
@@ -176,7 +176,7 @@ class LocalizationTest extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.a || gamepad2.a) {
+        if (gamepad1.aWasPressed() || gamepad2.aWasPressed()) {
             debugStringEnabled = !debugStringEnabled;
         }
 
@@ -402,7 +402,7 @@ class ForwardVelocityTuner extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.b) {
+        if (gamepad1.bWasPressed()) {
             stopRobot();
             requestOpModeStop();
         }
@@ -440,7 +440,7 @@ class ForwardVelocityTuner extends OpMode {
             telemetryM.update(telemetry);
             telemetry.update();
 
-            if (gamepad1.a) {
+            if (gamepad1.aWasPressed()) {
                 follower.setXVelocity(average);
                 String message = "XMovement: " + average;
                 changes.add(message);
@@ -511,7 +511,7 @@ class LateralVelocityTuner extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.b) {
+        if (gamepad1.bWasPressed()) {
             stopRobot();
             requestOpModeStop();
         }
@@ -542,7 +542,7 @@ class LateralVelocityTuner extends OpMode {
             telemetryM.debug("Press A to set the Lateral Velocity temporarily (while robot remains on).");
             telemetryM.update(telemetry);
 
-            if (gamepad1.a) {
+            if (gamepad1.aWasPressed()) {
                 follower.setYVelocity(average);
                 String message = "YMovement: " + average;
                 changes.add(message);
@@ -610,7 +610,7 @@ class ForwardZeroPowerAccelerationTuner extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.b) {
+        if (gamepad1.bWasPressed()) {
             stopRobot();
             requestOpModeStop();
         }
@@ -648,7 +648,7 @@ class ForwardZeroPowerAccelerationTuner extends OpMode {
             telemetryM.debug("Press A to set the Forward Zero Power Acceleration temporarily (while robot remains on).");
             telemetryM.update(telemetry);
 
-            if (gamepad1.a) {
+            if (gamepad1.aWasPressed()) {
                 follower.getConstants().setForwardZeroPowerAcceleration(average);
                 String message = "Forward Zero Power Acceleration: " + average;
                 changes.add(message);
@@ -714,7 +714,7 @@ class LateralZeroPowerAccelerationTuner extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.b) {
+        if (gamepad1.bWasPressed()) {
             stopRobot();
             requestOpModeStop();
         }
@@ -752,7 +752,7 @@ class LateralZeroPowerAccelerationTuner extends OpMode {
             telemetryM.debug("Press A to set the Lateral Zero Power Acceleration temporarily (while robot remains on).");
             telemetryM.update(telemetry);
 
-            if (gamepad1.a) {
+            if (gamepad1.aWasPressed()) {
                 follower.getConstants().setLateralZeroPowerAcceleration(average);
                 String message = "Lateral Zero Power Acceleration: " + average;
                 changes.add(message);
@@ -1499,7 +1499,7 @@ class SwerveOffsetsTest extends OpMode {
     /** This initializes the PoseUpdater, the drive motors, and the Panels telemetry. */
     @Override
     public void init_loop() {
-        if (gamepad1.a || gamepad2.a) {
+        if (gamepad1.aWasPressed() || gamepad2.aWasPressed()) {
             debugStringEnabled = !debugStringEnabled;
         }
 
@@ -1525,7 +1525,7 @@ class SwerveOffsetsTest extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.a || gamepad2.a) {
+        if (gamepad1.aWasPressed() || gamepad2.aWasPressed()) {
             debugStringEnabled = !debugStringEnabled;
         }
 
@@ -1557,7 +1557,7 @@ class SwerveTurnTest extends OpMode {
     /** This initializes the PoseUpdater, the drive motors, and the Panels telemetry. */
     @Override
     public void init_loop() {
-        if (gamepad1.a || gamepad2.a) {
+        if (gamepad1.aWasPressed() || gamepad2.aWasPressed()) {
             debugStringEnabled = !debugStringEnabled;
         }
 
@@ -1583,7 +1583,7 @@ class SwerveTurnTest extends OpMode {
      */
     @Override
     public void loop() {
-        if (gamepad1.a || gamepad2.a) {
+        if (gamepad1.aWasPressed() || gamepad2.aWasPressed()) {
             debugStringEnabled = !debugStringEnabled;
         }
 

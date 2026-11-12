@@ -20,9 +20,9 @@ import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 
 public class Constants {
     public static FollowerConstants followerConstants = new FollowerConstants()
-            .mass(14.5)   // Mass of the robot in kg
-            .forwardZeroPowerAcceleration(-31.4467)
-            .lateralZeroPowerAcceleration(-53.4359)
+            .mass(11.5)   // Mass of the robot in kg
+            .forwardZeroPowerAcceleration(-21.8384)
+            .lateralZeroPowerAcceleration(-50.6789)
             .translationalPIDFCoefficients(new PIDFCoefficients(0.05, 0.0003, 0.005, 0.02))
             .headingPIDFCoefficients(new PIDFCoefficients(0.85, 0.0003, 0.033, 0.02))
             .drivePIDFCoefficients(new FilteredPIDFCoefficients(0.025, 0, 0.00001, 0.6, 0.01))
@@ -45,20 +45,20 @@ public class Constants {
             .rightRearMotorName("backRightMotor")
             .leftRearMotorName("backLeftMotor")
             .leftFrontMotorName("frontLeftMotor")
-            .leftFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
-            .leftRearMotorDirection(DcMotorSimple.Direction.REVERSE)
-            .rightFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
-            .rightRearMotorDirection(DcMotorSimple.Direction.FORWARD)
-            .xVelocity(82.176986)  // Tune with ForwardVelocityTuner
-            .yVelocity(52.458373)  // Tune with LateralVelocityTuner
+            .leftFrontMotorDirection(DcMotorSimple.Direction.FORWARD)
+            .leftRearMotorDirection(DcMotorSimple.Direction.FORWARD)
+            .rightFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
+            .rightRearMotorDirection(DcMotorSimple.Direction.REVERSE)
+            .xVelocity(96.980015)  // Tune with ForwardVelocityTuner
+            .yVelocity(77.376084)  // Tune with LateralVelocityTuner
             ;
 
     public static PinpointConstants localizerConstants = new PinpointConstants()
-            .forwardPodY(-88.15)
-            .strafePodX(-118.85)
+            .forwardPodY(123.6)
+            .strafePodX(0.0)
             .distanceUnit(DistanceUnit.MM)
             .hardwareMapName("pinpointIMU")
-            .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_SWINGARM_POD)
+            .encoderResolution(GoBildaPinpointDriver.GoBildaOdometryPods.goBILDA_4_BAR_POD)
             .forwardEncoderDirection(GoBildaPinpointDriver.EncoderDirection.REVERSED)
             .strafeEncoderDirection(GoBildaPinpointDriver.EncoderDirection.FORWARD);
 }
