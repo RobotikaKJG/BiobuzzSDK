@@ -106,7 +106,7 @@ public class Dependencies {
     }
 
     public AutoIntakeTransferLogic createAutoIntakeTransferLogic() {
-        return new AutoIntakeTransferLogic(sensorControl, gamepad1);
+        return new AutoIntakeTransferLogic(sensorControl, gamepad1, motorControl);
     }
 
     private IntakeMotorControl createIntakeMotorControl() {

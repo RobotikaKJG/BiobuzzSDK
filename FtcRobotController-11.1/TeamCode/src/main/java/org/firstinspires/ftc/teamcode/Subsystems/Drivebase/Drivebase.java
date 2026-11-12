@@ -101,7 +101,7 @@ public class Drivebase {
         selectGamepad();
         double y = -currentGamepad.left_stick_y;// * yGain;
         double x = -currentGamepad.left_stick_x;// * xGain;
-        double rotation = currentGamepad.right_stick_x;// * rotationGain;
+        double rotation = -currentGamepad.right_stick_x;// * rotationGain;
 
         // Snap to full power straight if within 5 degrees of vertical (top/bottom)
         if (Math.abs(y) > 0.7) {
@@ -121,12 +121,12 @@ public class Drivebase {
         if (GlobalVariables.alliance == Alliance.Red) {
             y = currentGamepad.left_stick_y;
             x = currentGamepad.left_stick_x;
-            rotation = currentGamepad.right_stick_x;
+            rotation = -currentGamepad.right_stick_x;
         }
         else {
             y = -currentGamepad.left_stick_y;
             x = -currentGamepad.left_stick_x;
-            rotation = currentGamepad.right_stick_x;
+            rotation = -currentGamepad.right_stick_x;
         }
         driverOrientedGamepadDrive(y, x, rotation, maxSpeed);
     }

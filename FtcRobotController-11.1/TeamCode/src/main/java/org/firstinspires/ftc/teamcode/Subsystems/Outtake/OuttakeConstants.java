@@ -7,23 +7,19 @@ public class OuttakeConstants {
     public static double turretServoMax = 0.9;
     public static double turretServoMin = 0.1;
 
-    // These bound the same physical travel the turret has always had; because
-    // turretDirection is -1, the RIGHT limit is the one near turretServoMax:
-    // -100 -> pos 0.81. Anything past that presses the turret into its hard stop
-    // and stalls it (the old limit-to-limit jam during fast drivetrain rotation).
-    public static double turretLimitRight = -198.0;
-    public static double turretLimitLeft = 198.0;
+    // Reachable turret window in degrees (0 = mechanical center, servo pos 0.5).
+    // TurretServoControl further tightens this to whatever the servo travel
+    // (turretServoMin/Max) physically allows, so widening it past that is harmless.
+    public static double turretLimitRight = -200.0;
+    public static double turretLimitLeft = 135.0;
     public static double turretGearRatio = 20.0 / 13.0;
     public static double turretServoTravel = 349.0;
 
-    // Sign of the angle -> servo-position mapping. -1 because increasing servo
-    // position rotates the turret toward negative (right) angles; flip this if
-    // the turret ever aims to the side opposite the target.
-    public static double turretDirection = -1.0;
+    // Sign of the angle -> servo-position mapping. +1: increasing servo position rotates
+    // the turret toward positive (left) angles. Flip if the turret aims to the wrong side.
+    public static double turretDirection = 1.0;
 
     public static double turretServoSlewPerSec = 1.8;
-
-    public static double turretDeadZoneHysteresisDeg = 20.0;
 
     public static double turretServo1Max = turretServoMax * turretServo1Mult;
     public static double turretServo2Max = turretServoMax * turretServo2Mult;

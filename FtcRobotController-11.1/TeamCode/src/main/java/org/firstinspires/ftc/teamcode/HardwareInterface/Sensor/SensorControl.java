@@ -252,7 +252,7 @@ public class SensorControl {
         double fusedHeading = normalizeRadians(currentPose.getHeading() + CONTINUOUS_FUSION_ALPHA * angleDiff);
 
         Pose fusedPose = new Pose(fusedX, fusedY, fusedHeading);
-        
+
         pedroLocalizer.setPose(fusedPose);
         lastPose = fusedPose; // SYNC: Prevent velocity spike
     }
@@ -379,7 +379,7 @@ public class SensorControl {
                         // Botpose coordinates are in meters
                         double botX_m = botpose.getPosition().x;
                         double botY_m = botpose.getPosition().y;
-                        
+
                         // FieldHalfInches is in inches, convert to meters for calculation
                         double fieldHalf_m = FieldHalfInches * 0.0254;
 
@@ -416,6 +416,33 @@ public class SensorControl {
     //  Other Utilities
     //
 
+    /**
+     * The point the turret should face, in the SAME coordinate frame as
+     * getLocalizerPose(). TurretServoControl does all the turret geometry from this.
+     */
+    public Pose getTurretGoalPose() {
+        boolean red = GlobalVariables.alliance == Alliance.Red;
+        double x = red ? RedXInches : BlueXInches;
+        double y = red ? RedYInches : BlueYInches;
+        if (GlobalVariables.isAutonomous) {
+            x += 72;
+            y += 72;
+        }
+        return new Pose(x, y, 0);
+    }
+
+    /** Field-frame velocity (in/s, in/s, rad/s). Never null; zeros if the estimate is missing or bad. */
+    public Pose getLocalizerVelocity() {
+        Pose v = pedroLocalizer.getVelocity();
+        if (v == null) return new Pose(0, 0, 0);
+        double vx = v.getX(), vy = v.getY(), vh = v.getHeading();
+        if (Double.isNaN(vx) || Double.isNaN(vy) || Double.isNaN(vh)
+                || Double.isInfinite(vx) || Double.isInfinite(vy) || Double.isInfinite(vh)) {
+            return new Pose(0, 0, 0);
+        }
+        return new Pose(vx, vy, vh);
+    }
+
     public double getTurretTargetAngleDegrees() {
         Pose currentPose = pedroLocalizer.getPose();
         double robotX = currentPose.getX();
@@ -441,7 +468,7 @@ public class SensorControl {
 
         double turretAngleRad = angleToTargetRad - robotHeading + getTurretTargetAngleVelocityModifier();
 
-        return normalizeDegrees(Math.toDegrees(turretAngleRad));
+        return 0.0; // normalizeDegrees(Math.toDegrees(turretAngleRad));
     }
 
     public double getTurretTargetAngleVelocityModifier(){

@@ -23,7 +23,7 @@ public class DpadRightLogicG2 {
     }
 
     private boolean setTurretManual() {
-        turretServoControl.setManualAngleDeg(-90);
+        turretServoControl.setManualAngleDeg(-45);
         OuttakeStates.setTurretServoState(TurretServoStates.manual);
         completeAction();
         return true;
