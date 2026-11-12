@@ -194,7 +194,6 @@ public class SensorControl {
         // GATE 2: Cache Result
         LLResult result = limelight.getLatestResult();
         if (result == null || !result.isValid()) {
-            System.out.println("No limelight");
             return;
         }
 

@@ -10,6 +10,7 @@ package org.firstinspires.ftc.teamcode.Main;
  */
 public class LoopTimer {
     private final long[] samplesNs;
+    private long sumNs;
     private int index = 0;
     private int filled = 0;
     private volatile double avgMs = 0.0;
@@ -20,13 +21,12 @@ public class LoopTimer {
 
     /** Record one loop iteration's duration (nanoseconds) and update the rolling average. */
     public void record(long durationNs) {
+        sumNs += durationNs - samplesNs[index];
         samplesNs[index] = durationNs;
         index = (index + 1) % samplesNs.length;
         if (filled < samplesNs.length) filled++;
 
-        long sum = 0;
-        for (int i = 0; i < filled; i++) sum += samplesNs[i];
-        avgMs = (sum / (double) filled) / 1_000_000.0;
+        avgMs = (sumNs / (double) filled) / 1_000_000.0;
     }
 
     /** Average loop time over the last {@code window} iterations, in milliseconds. */

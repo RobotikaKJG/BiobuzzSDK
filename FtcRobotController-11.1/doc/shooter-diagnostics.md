@@ -29,16 +29,18 @@ or measured controller output during velocity control.
 
 Existing fields record all eight currents, shooter state, intake/transfer states,
 ball detection, battery voltage, goal distance, turret command-derived angle and pose.
-Currents rotate one motor per sample to limit hub traffic. currentMotor identifies the
-motor refreshed this sample; currentReadEpochMs records the actual cached ADC read times.
-Unmeasured currents are omitted. Battery samples occur at most every 250 ms. These rates
+A background worker rotates one motor current read every 50 ms to limit hub traffic
+(each motor approximately every 400 ms, or slower under load). currentMotor identifies
+the latest motor read by that worker; currentReadEpochMs records the actual cached ADC read times.
+Unmeasured currents are omitted. Battery samples occur at most every 250 ms on the same background worker.
+batteryReadEpochMs records when the voltage was read. These rates
 can miss short electrical transients. Servo commands are requested positions, not measured
 physical feedback; servo currents and physical shaft positions are not available here.
 
-sampleIntervalMs is elapsed time between recorded samples (including intentional idle
-throttling), captureMs measures logging acquisition overhead, and droppedSamples counts
-records discarded when the bounded disk queue fills. Active sampling follows the control
-loop; idle sampling is approximately 10 Hz. Logging still needs validation on the robot
+sampleIntervalMs is elapsed time between recorded samples (including intentional
+rate limits), captureMs measures logging acquisition overhead, and droppedSamples counts
+records discarded when the bounded disk queue fills. Active sampling is capped at 100 Hz on the control loop, using its bulk snapshot;
+idle sampling is approximately 10 Hz. Logging still needs validation on the robot
 for its effect on loop timing.
 
 ## Interpretation

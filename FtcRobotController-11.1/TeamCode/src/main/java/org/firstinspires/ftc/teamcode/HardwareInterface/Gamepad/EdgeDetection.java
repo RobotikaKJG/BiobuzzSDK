@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import java.util.EnumMap;
 
 public class EdgeDetection {
+    private static final GamepadIndexValues[] CONTROLS = GamepadIndexValues.values();
 
     private final GamepadIndex currentGamepad1Index = new GamepadIndex();
     private final GamepadIndex prevGamepad1Index = new GamepadIndex();
@@ -24,7 +25,7 @@ public class EdgeDetection {
         currentGamepad1Index.updateControls(currentG1);
         prevGamepad1Index.updateControls(prevG1);
 
-        for (GamepadIndexValues control : GamepadIndexValues.values()) {
+        for (GamepadIndexValues control : CONTROLS) {
             boolean currentState = currentGamepad1Index.getControl(control);
             boolean prevState = prevGamepad1Index.getControl(control);
 
@@ -37,7 +38,7 @@ public class EdgeDetection {
         currentGamepad2Index.updateControls(currentG2);
         prevGamepad2Index.updateControls(prevG2);
 
-        for (GamepadIndexValues control : GamepadIndexValues.values()) {
+        for (GamepadIndexValues control : CONTROLS) {
             boolean currentState = currentGamepad2Index.getControl(control);
             boolean prevState = prevGamepad2Index.getControl(control);
 

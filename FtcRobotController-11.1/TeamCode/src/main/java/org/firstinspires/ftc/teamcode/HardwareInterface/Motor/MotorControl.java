@@ -26,6 +26,8 @@ public class MotorControl {
     private DcMotorEx[] motors;
     private final Utilities utilities = new Utilities();
 
+    private static final PIDFCoefficients DEFAULT_VELOCITY_PIDF = new PIDFCoefficients(60, 0, 0, 11.75);
+
     private final double[] motorSpeeds = new double[8];
     private final double[] lastWrittenSpeeds = new double[8];
     private static final double POWER_EPSILON = 0.005;
@@ -163,6 +165,11 @@ public class MotorControl {
         return cachedCurrent[mi];
     }
 
+    /** Timestamp of the actual ADC read, for the diagnostics worker. */
+    public long getMotorCurrentReadEpochMs(int index) {
+        return lastCurrentReadMs[Utilities.motorIndex(index, 0)];
+    }
+
     public void setMotorCurrentAlert(int index, double current)
     {
         for (int i = 0; i < Utilities.configLength(index); i++)
@@ -213,14 +220,12 @@ public class MotorControl {
 
     /** Copies diagnostic values without issuing extra motor configuration writes. */
     public void captureDiagnostics(double[] positions, double[] velocities,
-                                   double[] powerCommands, double[] velocityTargets,
-                                   double[] currentReadTimes) {
+                                   double[] powerCommands, double[] velocityTargets) {
         for (int i = 0; i < motors.length; i++) {
             positions[i] = motors[i].getCurrentPosition();
             velocities[i] = motors[i].getVelocity();
             powerCommands[i] = velocityControlled[i] ? Double.NaN : lastWrittenSpeeds[i];
             velocityTargets[i] = getLastCommandedVelocity(i);
-            currentReadTimes[i] = lastCurrentReadMs[i] == 0 ? Double.NaN : lastCurrentReadMs[i];
         }
     }
 
@@ -250,7 +255,7 @@ public class MotorControl {
     }
 
     public void setMotorRPM(int index, double velocityTicksPerSecond) {
-        setMotorRPM(index, velocityTicksPerSecond, new PIDFCoefficients(60, 0, 0, 11.75));
+        setMotorRPM(index, velocityTicksPerSecond, DEFAULT_VELOCITY_PIDF);
     }
 
     public void setMotorRPM(int index, double velocityTicksPerSecond, PIDFCoefficients pidf) {

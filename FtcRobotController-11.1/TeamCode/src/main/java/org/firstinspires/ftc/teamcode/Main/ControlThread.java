@@ -30,6 +30,7 @@ public class ControlThread extends Thread {
     private final LinearOpMode opMode;
     private final List<LynxModule> allHubs;
     private final IterativeController iterativeController;
+    private final LoopTimer workTimer = new LoopTimer(100);
     private final LoopTimer loopTimer = new LoopTimer(10);
 
     private volatile boolean running = true;
@@ -48,6 +49,8 @@ public class ControlThread extends Thread {
 
     /** Average control-loop period over the last 10 iterations (ms). */
     public double getAvgLoopMs() { return loopTimer.getAvgMs(); }
+    public double getAvgWorkMs() { return workTimer.getAvgMs(); }
+    public double getAvgLoggingMs() { return iterativeController.getAvgLoggingMs(); }
     public long getIterations() { return iterations; }
     public long getErrorCount() { return errorCount; }
     public String getLastError() { return lastError; }
@@ -87,6 +90,7 @@ public class ControlThread extends Thread {
                 // Cap the idle rate so the loop doesn't busy-spin a core when there's no
                 // hardware I/O this iteration (reads throttled/cached, writes gated). When
                 // actually busy it's I/O-bound and work exceeds the cap, so this won't fire.
+                workTimer.record(System.nanoTime() - startNs);
                 long workMs = (System.nanoTime() - startNs) / 1_000_000L;
                 long sleepMs = TARGET_PERIOD_MS - workMs;
                 if (sleepMs > 0) {

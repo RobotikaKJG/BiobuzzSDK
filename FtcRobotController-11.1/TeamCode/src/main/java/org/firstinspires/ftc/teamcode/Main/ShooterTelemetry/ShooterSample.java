@@ -41,6 +41,7 @@ public class ShooterSample {
     public boolean turretTracking;
     public boolean intakeBall;
     public boolean transferBall;
+    public long batteryReadEpochMs;
     public double battery;      // volts, NaN if not sampled this tick
     public double distance;     // inches to goal (localizer); NaN if invalid
     public double turretDeg;    // turret angle degrees; NaN if unavailable
@@ -51,7 +52,7 @@ public class ShooterSample {
     /** Serialize as one compact JSONL line. Hand-built (no reflection) — this runs
      *  on the writer thread but keeps allocation predictable. */
     public String toJsonLine() {
-        StringBuilder sb = new StringBuilder(220);
+        StringBuilder sb = new StringBuilder(1536);
         sb.append("{\"t\":").append(tMs);
         sb.append(",\"inferredShot\":").append(inferredShot);
         sb.append(",\"inferredShotCount\":").append(inferredShotCount);
@@ -75,6 +76,7 @@ public class ShooterSample {
         sb.append(",\"ib\":").append(intakeBall ? 1 : 0);
         sb.append(",\"tb\":").append(transferBall ? 1 : 0);
         appendNum(sb, "bat", battery);
+        if (batteryReadEpochMs > 0) sb.append(",\"batteryReadEpochMs\":").append(batteryReadEpochMs);
         appendNum(sb, "d", distance);
         appendNum(sb, "ta", turretDeg);
         appendNum(sb, "px", poseX);

@@ -37,6 +37,7 @@ public class GeneralAutonomous extends LinearOpMode {
         dependencies.shooterLogger.start("GeneralAutonomous");
 
         LoopTimer loopTimer = new LoopTimer(10);
+        long lastTelemetryMs = 0;
 
         try {
             while (opModeIsActive()) {
@@ -50,9 +51,13 @@ public class GeneralAutonomous extends LinearOpMode {
 
                 loopTimer.record(System.nanoTime() - startNs);
 
-                telemetry.addData("outtake vel", dependencies.motorControl.getMotorVelocity(MotorConstants.outtake1));
-                telemetry.addData("Auto loop avg (ms, last 10)", "%.2f", loopTimer.getAvgMs());
-                telemetry.update();
+                long nowMs = System.currentTimeMillis();
+                if (nowMs - lastTelemetryMs >= 150) {
+                    telemetry.addData("outtake vel", dependencies.motorControl.getMotorVelocity(MotorConstants.outtake1));
+                    telemetry.addData("Auto loop avg (ms, last 10)", "%.2f", loopTimer.getAvgMs());
+                    telemetry.update();
+                    lastTelemetryMs = nowMs;
+                }
 
                 if (gamepad1.triangle)
                     break;

@@ -26,6 +26,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeStates;
  * longer touches the drive motors, the turret servos, or the localizer.
  */
 public class IterativeController {
+    private final LoopTimer logTimer = new LoopTimer(100);
     private final MotorControl motorControl;
     private final Gamepad gamepad1;
     private final Gamepad gamepad2;
@@ -89,8 +90,12 @@ public class IterativeController {
 
         // Shooter telemetry: sample after all writes so velocities/states reflect this
         // iteration. Reads hit this loop's bulk-cache snapshot; non-blocking, never throws.
+        long logStart = System.nanoTime();
         shooterLogger.sample();
+        logTimer.record(System.nanoTime() - logStart);
     }
+
+    public double getAvgLoggingMs() { return logTimer.getAvgMs(); }
 
     private void updateCommonValues() {
         prevGamepad1.copy(currentGamepad1);
