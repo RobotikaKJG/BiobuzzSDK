@@ -10,8 +10,8 @@ public class IntakeConstants {
     public static double lockServoLockedPos = 0.25;
     public static double lockServoUnlockedPos = 0;
 
-    public static double flowerServoLockedPos = 0.25;
-    public static double flowerServoUnlockedPos = 0;
+    public static double flowerServoLockedPos = 0;
+    public static double flowerServoUnlockedPos = 0.25;
 
     public static double lockServoMinPos = Math.min(lockServoLockedPos, lockServoUnlockedPos);
     public static double lockServoMaxPos = Math.max(lockServoLockedPos, lockServoUnlockedPos);

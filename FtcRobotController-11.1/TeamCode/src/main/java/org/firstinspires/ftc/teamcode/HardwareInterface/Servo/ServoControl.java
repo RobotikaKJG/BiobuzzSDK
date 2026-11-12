@@ -32,9 +32,7 @@ public class ServoControl {
 //        };
         servos = new Servo[]{
                 hardwareMap.get(Servo.class, "lockServo"),
-        };
-        servos = new Servo[]{
-                hardwareMap.get(Servo.class, "flowerServo"),
+                hardwareMap.get(Servo.class, "flowerServo")
         };
 //        analog = new AnalogInput[]{
 //                hardwareMap.get(AnalogInput.class, "turretAnalog")
@@ -45,8 +43,8 @@ public class ServoControl {
     public void setServoStartPos() {
         servos[ServoConstants.lockServo].setPosition(IntakeConstants.lockServoLockedPos);
         lastWrittenPos[ServoConstants.lockServo] = IntakeConstants.lockServoLockedPos;
-//        servos[ServoConstants.flowerServo].setPosition(IntakeConstants.lockServoLockedPos);
-//        lastWrittenPos[ServoConstants.lockServo] = IntakeConstants.lockServoLockedPos;
+        servos[ServoConstants.flowerServo].setPosition(IntakeConstants.flowerServoLockedPos);
+        lastWrittenPos[ServoConstants.flowerServo] = IntakeConstants.flowerServoLockedPos;
     }
 
     public void setServoPos(int index, double position) {
@@ -77,6 +75,8 @@ public class ServoControl {
         switch (index) {
             case ServoConstants.lockServo:
                 return "lockServo";
+            case ServoConstants.flowerServo:
+                return "flowerServo";
             default:
                 return "unknownServo" + index;
         }

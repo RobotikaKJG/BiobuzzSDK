@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeConstants;
 public class ServoConstants {
     // Servo indexes
     public static final int lockServo = 0;
-    public static final int flowerServo = 0;
+    public static final int flowerServo = 1;
 
     // CR Servo indexes
 

@@ -16,7 +16,6 @@ public class RightBumperControl {
                 IntakeStates.setFlowerServoState(FlowerServoStates.lock);
                 break;
             case idle:
-                IntakeStates.setFlowerServoState(FlowerServoStates.lock);
                 break;
         }
     }

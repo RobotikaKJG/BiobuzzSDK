@@ -14,7 +14,7 @@ public class RightBumperLogic {
     }
 
 
-    private void setPos(){
+    private void completeAction(){
         RightBumperControl.update();
         ButtonStates.setRightBumperState(RightBumperStates.idle);
     }
@@ -23,13 +23,13 @@ public class RightBumperLogic {
         if (IntakeStates.getFlowerServoState() == FlowerServoStates.unlock) return false;
 
         ButtonStates.setRightBumperState(RightBumperStates.activate);
-        setPos();
+        completeAction();
         return true;
     }
 
     private void stopServoLock() {
         ButtonStates.setRightBumperState(RightBumperStates.stop);
-        setPos();
+        completeAction();
     }
 
 }

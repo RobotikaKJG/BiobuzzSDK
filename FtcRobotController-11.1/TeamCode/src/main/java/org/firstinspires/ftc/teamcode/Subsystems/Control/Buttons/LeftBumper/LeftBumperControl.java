@@ -19,7 +19,6 @@ public class LeftBumperControl {
                 IntakeStates.setLockServoState(LockServoStates.lock);
                 break;
             case idle:
-                IntakeStates.setLockServoState(LockServoStates.lock);
                 break;
         }
     }
