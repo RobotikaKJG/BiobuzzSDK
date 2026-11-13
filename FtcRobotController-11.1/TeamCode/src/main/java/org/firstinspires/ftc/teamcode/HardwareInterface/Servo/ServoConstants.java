@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.HardwareInterface.Servo;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeConstants;
 
 public class ServoConstants {
@@ -18,13 +17,13 @@ public class ServoConstants {
 
     public static final double[] servoMinPos =
             {
-                    IntakeConstants.lockServoMinPos,
+                    OuttakeConstants.lockServoMinPos,
                     OuttakeConstants.turretServo1Min,
                     OuttakeConstants.turretServo2Min
             };
     public static final double[] servoMaxPos =
             {
-                    IntakeConstants.lockServoMaxPos,
+                    OuttakeConstants.lockServoMaxPos,
                     OuttakeConstants.turretServo1Max,
                     OuttakeConstants.turretServo2Max
             };

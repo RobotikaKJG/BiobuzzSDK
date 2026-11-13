@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.HardwareInterface.Motor.MotorConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivebase.DrivebaseController;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.AutoCycleShoot.AutoCycleShootStates;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeStates;
+import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeConstants;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class GeneralBlueTeleOp extends LinearOpMode {
         GlobalVariables.rpmOffset = 0;
 
         Dependencies dependencies = new Dependencies(hardwareMap, gamepad1, gamepad2, telemetry);
+        dependencies.servoControl.setTurretServosPos(OuttakeConstants.blueTurretStartPos);
         IterativeController iterativeController = new IterativeController(dependencies);
         DrivebaseController drivebaseController = dependencies.createDrivebaseController();
 

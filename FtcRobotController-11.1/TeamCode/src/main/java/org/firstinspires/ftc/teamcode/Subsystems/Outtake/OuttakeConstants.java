@@ -1,6 +1,19 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Outtake;
 
 public class OuttakeConstants {
+    // Turret servo position commanded during INIT, before tracking starts.
+    public static double turretStartPos = 0.5;
+    // Midpoint of the observed red/blue positions (about 23 turret degrees from blue).
+    public static double blueTurretStartPos = 0.2014;
+    // Added to the calculated turret aiming angle while tracking after START.
+    public static double turretAimOffsetDeg = 45.0;
+    // Gate servo positions used during startup and ball feeding.
+    public static double lockServoLockedPos = 0.048; // 
+    public static double lockServoUnlockedPos = 0.34;
+
+    public static double lockServoMinPos = Math.min(lockServoLockedPos, lockServoUnlockedPos);
+    public static double lockServoMaxPos = Math.max(lockServoLockedPos, lockServoUnlockedPos);
+
     public static double turretServo1Mult = 1.0;
     public static double turretServo2Mult = 1.0;
 

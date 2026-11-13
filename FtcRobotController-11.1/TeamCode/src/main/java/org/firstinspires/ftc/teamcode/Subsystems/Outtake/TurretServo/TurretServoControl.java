@@ -53,6 +53,9 @@ public class TurretServoControl {
             }
 
             target = sensorControl.getTurretTargetAngleDegrees();
+            if (isFinite(target)) {
+                target = normalizeDegrees(target + OuttakeConstants.turretAimOffsetDeg);
+            }
         }
 
         if (!isFinite(target)) {
