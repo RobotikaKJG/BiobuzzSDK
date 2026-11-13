@@ -6,7 +6,6 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeConstants;
 
 public class ServoControl {
@@ -33,6 +32,7 @@ public class ServoControl {
         getServos();
         lastWrittenPos = new double[servos.length];
         java.util.Arrays.fill(lastWrittenPos, Double.NaN);
+        setTurretServosPos(OuttakeConstants.turretStartPos);
     }
 
     private void getServos() {
@@ -51,8 +51,8 @@ public class ServoControl {
     }
 
     public void setServoStartPos() {
-        servos[ServoConstants.lockServo].setPosition(IntakeConstants.lockServoLockedPos);
-        lastWrittenPos[ServoConstants.lockServo] = IntakeConstants.lockServoLockedPos;
+        servos[ServoConstants.lockServo].setPosition(OuttakeConstants.lockServoLockedPos);
+        lastWrittenPos[ServoConstants.lockServo] = OuttakeConstants.lockServoLockedPos;
     }
 
     public void setServoPos(int index, double position) {

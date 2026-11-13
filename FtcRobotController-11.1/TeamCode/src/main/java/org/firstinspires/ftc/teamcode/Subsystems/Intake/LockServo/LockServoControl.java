@@ -1,8 +1,9 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Intake.LockServo;
 
+import org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeConstants;
+
 import org.firstinspires.ftc.teamcode.HardwareInterface.Servo.ServoConstants;
 import org.firstinspires.ftc.teamcode.HardwareInterface.Servo.ServoControl;
-import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeConstants;
 import org.firstinspires.ftc.teamcode.Subsystems.Intake.IntakeStates;
 
 public class LockServoControl {
@@ -24,10 +25,10 @@ public class LockServoControl {
     public void updateStates() {
         switch (IntakeStates.getLockServoState()) {
             case lock:
-                servoControl.setServoPos(ServoConstants.lockServo, IntakeConstants.lockServoLockedPos);
+                servoControl.setServoPos(ServoConstants.lockServo, OuttakeConstants.lockServoLockedPos);
                 break;
             case unlock:
-                servoControl.setServoPos(ServoConstants.lockServo, IntakeConstants.lockServoUnlockedPos);
+                servoControl.setServoPos(ServoConstants.lockServo, OuttakeConstants.lockServoUnlockedPos);
                 break;
             case idle:
                 break;
