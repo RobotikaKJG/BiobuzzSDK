@@ -105,6 +105,8 @@ public class OuttakeManualControl extends LinearOpMode {
                     telemetry.addData("Actual RPM 2", motorControl.getMotorRPM(MotorConstants.outtake2));
                     telemetry.addData("[Circle] Intake/Transfer", intakeActive ? "ON" : "OFF");
                     telemetry.addData("Loop average (ms)", "%.2f", loopTimer.getAvgMs());
+                    telemetry.addData("Vel tps 1", motorControl.getLastCommandedVelocity(MotorConstants.outtake1));
+                    telemetry.addData("Vel tps 2", motorControl.getLastCommandedVelocity(MotorConstants.outtake2));
                     telemetry.update();
                     lastTelemetryMs = nowMs;
                 }

@@ -11,15 +11,15 @@ public class OuttakeConstants {
     // turretDirection is -1, the RIGHT limit is the one near turretServoMax:
     // -100 -> pos 0.81. Anything past that presses the turret into its hard stop
     // and stalls it (the old limit-to-limit jam during fast drivetrain rotation).
-    public static double turretLimitRight = -198.0;
-    public static double turretLimitLeft = 198.0;
+    public static double turretLimitRight = -135.0;
+    public static double turretLimitLeft = 135.0;
     public static double turretGearRatio = 20.0 / 13.0;
     public static double turretServoTravel = 349.0;
 
     // Sign of the angle -> servo-position mapping. -1 because increasing servo
     // position rotates the turret toward negative (right) angles; flip this if
     // the turret ever aims to the side opposite the target.
-    public static double turretDirection = -1.0;
+    public static double turretDirection = 1.0;
 
     public static double turretServoSlewPerSec = 1.8;
 
@@ -44,7 +44,7 @@ public class OuttakeConstants {
     // had not moved yet. Hold the intake/transfer this long after the unlock command.
     // Diagnostic value — far longer than servo travel should need. If it still jams at
     // 2 s the cause is not timing (check latch command / position limits / binding).
-    public static double latchOpenSettleSec = 2.0;
+    public static double latchOpenSettleSec = 0.2;
     public static double deactivateAfter = 0.3;
 
     // TeleOp auto-finish for a shot: feed until both ball sensors have read empty
@@ -78,7 +78,7 @@ public class OuttakeConstants {
     // Close family +1% vs prior tune (1680 / 1600 / 1800 / 3400 RPM floor).
     public static double outtakeSpeedCloseClose = 1616;
     public static double outtakeSpeedFar = 2190;
-    public static double outtakeSpeedClose = 1697;
+    public static double outtakeSpeedClose = 1450;
     public static double outtakeSpeedCloseFar = 1818;
 
     // Close-mode distance→velocity (ticks/s). Anchored at the empirically tuned

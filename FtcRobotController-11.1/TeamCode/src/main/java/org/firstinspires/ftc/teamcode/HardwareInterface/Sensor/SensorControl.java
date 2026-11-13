@@ -41,10 +41,10 @@ public class SensorControl {
     private double flywheelOffset = 0.0;
 
     // Goal coordinates in INCHES
-    public static final double RedXInches = 62.0;
-    public static final double RedYInches = 61.5;
-    public static final double BlueXInches = -62.0;
-    public static final double BlueYInches = 61.0;
+    public static final double RedXInches = -13.0;
+    public static final double RedYInches = -13.0;
+    public static final double BlueXInches = 13.0;
+    public static final double BlueYInches = 13.0;
 
     private static final double FieldHalfInches = 66.93;
 
@@ -112,9 +112,14 @@ public class SensorControl {
 
     private void setInitialLocalisationAngle() {
         if (!GlobalVariables.wasAutonomous) {
-            pedroLocalizer.setPose(new Pose(0, 0, 0));
+            if (GlobalVariables.alliance == Alliance.Red) {
+                // Red goal at (-13, -13). Robot starts 53 inches further down (-66) and in line with goal.
+                pedroLocalizer.setPose(new Pose(-13, -66, Math.toRadians(0)));
+            } else {
+                // Blue goal at (13, 13). Robot starts 53 inches further up (66) and in line with goal.
+                pedroLocalizer.setPose(new Pose(13, 66, Math.toRadians(180)));
+            }
         } else {
-            // GlobalVariables.wasAutonomous = false; // MOVED: Handled in GeneralAutonomous begin()
             pedroLocalizer.setPose(GlobalVariables.lastPose);
         }
         lastPose = pedroLocalizer.getPose();
@@ -268,10 +273,10 @@ public class SensorControl {
 
     public double getDistanceFromLocalizer() {
         Pose currentPose = pedroLocalizer.getPose();
-        double robotX = currentPose.getY();
-        double robotY = currentPose.getX();
+        double robotX = currentPose.getX();
+        double robotY = currentPose.getY();
 
-        double targetX = (GlobalVariables.alliance == Alliance.Blue) ? RedXInches : BlueXInches;
+        double targetX = (GlobalVariables.alliance == Alliance.Red) ? RedXInches : BlueXInches;
         double targetY = (GlobalVariables.alliance == Alliance.Red) ? RedYInches : BlueYInches;
 
         double dx = targetX - robotX;
@@ -421,17 +426,8 @@ public class SensorControl {
         double robotY = currentPose.getY();
         double robotHeading = currentPose.getHeading();
 
-        double targetX;
-        double targetY;
-
-        if (GlobalVariables.isAutonomous) {
-            targetX = (GlobalVariables.alliance == Alliance.Red) ? RedXInches + 72 : BlueXInches + 72;
-            targetY = (GlobalVariables.alliance == Alliance.Red) ? RedYInches + 72 : BlueYInches + 72;
-        }
-        else {
-            targetX = (GlobalVariables.alliance == Alliance.Red) ? RedXInches : BlueXInches;
-            targetY = (GlobalVariables.alliance == Alliance.Red) ? RedYInches : BlueYInches;
-        }
+        double targetX = (GlobalVariables.alliance == Alliance.Red) ? RedXInches : BlueXInches;
+        double targetY = (GlobalVariables.alliance == Alliance.Red) ? RedYInches : BlueYInches;
 
         double dx = targetX - robotX;
         double dy = targetY - robotY;

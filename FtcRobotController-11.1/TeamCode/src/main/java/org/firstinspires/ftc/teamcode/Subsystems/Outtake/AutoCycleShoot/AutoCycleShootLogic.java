@@ -72,7 +72,7 @@ public class AutoCycleShootLogic {
     }
 
     private void turnBack() {
-        if(currentWait > getSeconds()) return;
+//        if(currentWait > getSeconds()) return;
         startFeed();
     }
 

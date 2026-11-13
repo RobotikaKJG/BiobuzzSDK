@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Intake.AutoIntakeTransfer;
 
 import com.acmerobotics.dashboard.message.redux.ReceiveGamepadState;
+import com.acmerobotics.dashboard.message.redux.ReceiveGamepadState;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.util.RobotLog;
 
+import org.firstinspires.ftc.teamcode.HardwareInterface.Motor.MotorConstants;
 import org.firstinspires.ftc.teamcode.HardwareInterface.Motor.MotorControl;
 import org.firstinspires.ftc.teamcode.HardwareInterface.Sensor.SensorControl;
 import org.firstinspires.ftc.teamcode.Main.GlobalVariables;
@@ -15,6 +17,7 @@ public class AutoIntakeTransferLogic {
     private double currentWait = 0;
     private boolean wasIfCalled = false;
     private SensorControl sensorControl;
+    private MotorControl motorControl;
     private Gamepad gamepad1;
 
     // Intake presence latch: set the instant either intake sensor sees the artifact,
@@ -23,8 +26,9 @@ public class AutoIntakeTransferLogic {
     private boolean intakeLatched = false;
     private double intakeClearSinceSec = -1;
 
-    public AutoIntakeTransferLogic(SensorControl sensorControl, Gamepad gamepad1) {
+    public AutoIntakeTransferLogic(SensorControl sensorControl, Gamepad gamepad1, MotorControl motorControl) {
         this.sensorControl = sensorControl;
+        this.motorControl = motorControl;
         this.gamepad1 = gamepad1;
     }
 
@@ -53,7 +57,7 @@ public class AutoIntakeTransferLogic {
     }
 
     private void activate() {
-        if (sensorControl.isTransferBall()) {
+        if (ballTransfer()) {
             RobotLog.ii(TAG, "activate: TRANSFER artifact -> checkAgainMid");
             IntakeStates.setAutoIntakeTransferState(AutoIntakeTransferStates.checkAgainMid);
             addWaitTime(IntakeConstants.checkAgainAfter);
@@ -62,7 +66,7 @@ public class AutoIntakeTransferLogic {
 
     private void checkAgainMid() {
         if (currentWait > getSeconds()) return;
-        if (sensorControl.isTransferBall()) {
+        if (ballTransfer()) {
             RobotLog.ii(TAG, "checkAgainMid: confirmed -> stopTransfer (transfer off)");
             IntakeStates.setAutoIntakeTransferState(AutoIntakeTransferStates.stopTransfer);
         }
@@ -122,7 +126,7 @@ public class AutoIntakeTransferLogic {
         }
 
         double now = getSeconds();
-        if (sensorControl.isIntakeBall()) {
+        if (ballIntake()) {
             intakeLatched = true;
             intakeClearSinceSec = -1;          // ball seen -> restart the release timer
         } else if (intakeLatched) {
@@ -134,6 +138,14 @@ public class AutoIntakeTransferLogic {
                 intakeClearSinceSec = -1;
             }
         }
+    }
+
+    private boolean ballTransfer() {
+        return motorControl.getMotorCurrent(MotorConstants.transfer) > 2.5;
+    }
+
+    private boolean ballIntake() {
+        return motorControl.getMotorCurrent(MotorConstants.intake) > 2.5;
     }
 
     private void addWaitTime(double waitTime) {

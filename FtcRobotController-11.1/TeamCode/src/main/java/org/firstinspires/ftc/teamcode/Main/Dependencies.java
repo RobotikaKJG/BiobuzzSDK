@@ -62,7 +62,7 @@ public class Dependencies {
             if (GlobalVariables.wasAutonomous) {
                 pedroLocalizer.setPose(GlobalVariables.lastPose);
             } else {
-                pedroLocalizer.setPose(new Pose(0, 0, 0));
+                pedroLocalizer.setPose(new Pose(-13, -66, 0));
             }
         }
         motorControl = new MotorControl(hardwareMap);
@@ -104,7 +104,7 @@ public class Dependencies {
     }
 
     public AutoIntakeTransferLogic createAutoIntakeTransferLogic() {
-        return new AutoIntakeTransferLogic(sensorControl, gamepad1);
+        return new AutoIntakeTransferLogic(sensorControl, gamepad1, motorControl);
     }
 
     private IntakeMotorControl createIntakeMotorControl() {

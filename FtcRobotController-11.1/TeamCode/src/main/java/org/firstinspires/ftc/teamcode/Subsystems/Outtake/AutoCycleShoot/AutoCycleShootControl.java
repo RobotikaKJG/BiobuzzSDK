@@ -66,7 +66,7 @@ public class AutoCycleShootControl {
                 IntakeStates.setAutoIntakeTransferState(AutoIntakeTransferStates.idle);
                 break;
             case turnBack:
-                IntakeStates.setTransferMotorState(TransferMotorStates.backward);
+//                IntakeStates.setTransferMotorState(TransferMotorStates.backward);
                 break;
             case turnTransfer:
                 if (canFeedBall()) {
@@ -99,7 +99,7 @@ public class AutoCycleShootControl {
                 break;
             case turnTransferBack:
                 holdingForRecovery = false;
-                IntakeStates.setTransferMotorState(TransferMotorStates.backward);
+//                IntakeStates.setTransferMotorState(TransferMotorStates.backward);
                 break;
             case deactivate:
                 resetFeedGate();

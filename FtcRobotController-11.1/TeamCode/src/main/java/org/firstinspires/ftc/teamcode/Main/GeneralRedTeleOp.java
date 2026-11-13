@@ -121,6 +121,7 @@ public class GeneralRedTeleOp extends LinearOpMode {
                         telemetry.addData("Control lastErr", controlThread.getErrorCount() + "x " + controlThread.getLastError());
                     if (driveErrors > 0)
                         telemetry.addData("Drive errors", driveErrors);
+                    telemetry.addData("Shooter vel:", dependencies.motorControl.getMotorVelocity(MotorConstants.outtake1));
                     telemetry.update();
                     lastTelemetryMs = nowMs;
                 }

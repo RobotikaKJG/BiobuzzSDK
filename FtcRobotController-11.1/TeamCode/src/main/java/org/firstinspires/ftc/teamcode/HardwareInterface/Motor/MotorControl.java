@@ -26,7 +26,7 @@ public class MotorControl {
     private DcMotorEx[] motors;
     private final Utilities utilities = new Utilities();
 
-    private static final PIDFCoefficients DEFAULT_VELOCITY_PIDF = new PIDFCoefficients(60, 0, 0, 11.75);
+    private static final PIDFCoefficients DEFAULT_VELOCITY_PIDF = new PIDFCoefficients(50, 0, 0, 12.8);
 
     private final double[] motorSpeeds = new double[8];
     private final double[] lastWrittenSpeeds = new double[8];

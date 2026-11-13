@@ -44,7 +44,7 @@ public class OuttakeMotorControl {
                 break;
             case forwardStart:
                 motorControl.setMotorRPM(
-                        MotorConstants.outtake, 1750 + GlobalVariables.rpmOffset);
+                        MotorConstants.outtake, OuttakeConstants.outtakeSpeedClose + GlobalVariables.rpmOffset);
                 break;
             case forwardFar:
                 motorControl.setMotorRPM(
@@ -52,8 +52,10 @@ public class OuttakeMotorControl {
                         OuttakeConstants.outtakeSpeedFar + GlobalVariables.rpmOffset);
                 break;
             case forwardClose:
-                calculateSpeed();
-                setMotorPowerControl(speed);
+//                calculateSpeed();
+//                setMotorPowerControl(speed);
+                motorControl.setMotorRPM(
+                        MotorConstants.outtake, 1505 + GlobalVariables.rpmOffset);
                 break;
             case backward:
                 motorControl.setMotorSpeed(MotorConstants.outtake, -0.5);
