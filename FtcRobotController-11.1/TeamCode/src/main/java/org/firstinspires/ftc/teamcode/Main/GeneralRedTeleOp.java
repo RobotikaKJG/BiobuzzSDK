@@ -103,6 +103,14 @@ public class GeneralRedTeleOp extends LinearOpMode {
                 long nowMs = System.currentTimeMillis();
                 if (nowMs - lastTelemetryMs >= TELEMETRY_INTERVAL_MS) {
                     telemetry.addData("Deployed", BuildInfo.DEPLOYED);
+                    telemetry.addData("Alliance", GlobalVariables.alliance);
+                    com.pedropathing.geometry.Pose pose = dependencies.sensorControl.getLocalizerPose();
+                    telemetry.addData("Robot pose", "x=%.1f y=%.1f heading=%.1f deg",
+                            pose.getX(), pose.getY(), Math.toDegrees(pose.getHeading()));
+                    telemetry.addData("Turret mode", OuttakeStates.getTurretServoState());
+                    telemetry.addData("Turret servo commands", "1=%.4f 2=%.4f",
+                            dependencies.servoControl.getServoPos(1),
+                            dependencies.servoControl.getServoPos(2));
                     telemetry.addLine(cycleTimer.toTable());
                     telemetry.addData("Drive loop",   "%.2f ms  (%.0f hz)", driveTimer.getAvgMs(), hz(driveTimer.getAvgMs()));
                     telemetry.addData("Turret loop",  "%.2f ms  (%.0f hz)", turretThread.getAvgLoopMs(), hz(turretThread.getAvgLoopMs()));

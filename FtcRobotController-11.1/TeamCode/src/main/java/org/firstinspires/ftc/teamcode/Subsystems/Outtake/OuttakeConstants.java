@@ -6,7 +6,7 @@ public class OuttakeConstants {
     // Midpoint of the observed red/blue positions (about 23 turret degrees from blue).
     public static double blueTurretStartPos = 0.2014;
     // Added to the calculated turret aiming angle while tracking after START.
-    public static double turretAimOffsetDeg = 45.0;
+    public static double turretAimOffsetDeg = -90.0;
     // Gate servo positions used during startup and ball feeding.
     public static double lockServoLockedPos = 0.048; // 
     public static double lockServoUnlockedPos = 0.34;

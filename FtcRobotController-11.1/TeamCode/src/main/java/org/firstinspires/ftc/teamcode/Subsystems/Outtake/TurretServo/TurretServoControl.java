@@ -32,6 +32,11 @@ public class TurretServoControl {
         // Bad pose data: keep the last good position instead of writing NaN.
         if (Double.isNaN(angle) || Double.isInfinite(angle)) return;
 
+        if (OuttakeStates.getTurretServoState() != TurretServoStates.manual) {
+            double adjustedRadians = Math.toRadians(angle + OuttakeConstants.turretAimOffsetDeg);
+            angle = Math.toDegrees(Math.atan2(Math.sin(adjustedRadians), Math.cos(adjustedRadians)));
+        }
+
         // 1) Don't turn past the limits.
         angle = clamp(angle, OuttakeConstants.turretLimitRight, OuttakeConstants.turretLimitLeft);
         targetAngleDeg = angle;
