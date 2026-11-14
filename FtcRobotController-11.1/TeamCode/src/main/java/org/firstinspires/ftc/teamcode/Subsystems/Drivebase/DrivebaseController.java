@@ -31,8 +31,8 @@ public class DrivebaseController {
 
         if (edgeDetection.rising(drivebaseTrigger.getTrigger()))
             drivebase.switchDrivingMode();
-        if (edgeDetection.rising(GamepadIndexValues.circle))
-            drivebase.togglePathFollowing();
+//        if (edgeDetection.rising(GamepadIndexValues.circle))
+//            drivebase.togglePathFollowing();
 
         drivebase.drive(DrivebaseConstants.getDriveSpeed());
     }

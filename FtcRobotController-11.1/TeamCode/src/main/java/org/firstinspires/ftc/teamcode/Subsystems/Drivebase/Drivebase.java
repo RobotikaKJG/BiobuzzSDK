@@ -43,57 +43,57 @@ public class Drivebase {
             currentGamepad.copy(gamepad1);
     }
 
-    public void togglePathFollowing() {
-        if (drivebaseState == DrivebaseState.TeleOp) {
-            drivebaseState = DrivebaseState.goToGate;
-            pathStarted = false;
-            buildPaths();
-        } else {
-            cancelPathFollowing();
-        }
-    }
+//    public void togglePathFollowing() {
+//        if (drivebaseState == DrivebaseState.TeleOp) {
+//            drivebaseState = DrivebaseState.goToGate;
+//            pathStarted = false;
+//            buildPaths();
+//        } else {
+//            cancelPathFollowing();
+//        }
+//    }
 
-    public void cancelPathFollowing() {
-        drivebaseState = DrivebaseState.TeleOp;
-        isDriverOriented = false; // Return to robot-oriented as requested
-        follower.breakFollowing();
-        follower.setMaxPower(1.0);
-        pathStarted = false;
-    }
+//    public void cancelPathFollowing() {
+//        drivebaseState = DrivebaseState.TeleOp;
+//        isDriverOriented = false; // Return to robot-oriented as requested
+//        follower.breakFollowing();
+//        follower.setMaxPower(1.0);
+//        pathStarted = false;
+//    }
 
-    private void buildPaths() {
-        if (GlobalVariables.alliance == Alliance.Red) {
-            firstPath = follower.pathBuilder()
-                    .addPath(new BezierLine(follower.getPose(), new Pose(48, -13.5)))
-                    .setConstantHeadingInterpolation(Math.toRadians(30))
-                    .build();
+//    private void buildPaths() {
+//        if (GlobalVariables.alliance == Alliance.Red) {
+//            firstPath = follower.pathBuilder()
+//                    .addPath(new BezierLine(follower.getPose(), new Pose(48, -13.5)))
+//                    .setConstantHeadingInterpolation(Math.toRadians(30))
+//                    .build();
+//
+//            secondPath = follower.pathBuilder()
+//                    .addPath(new BezierLine(new Pose(48, -13.5), new Pose(55.5, -13.5)))
+//                    .setConstantHeadingInterpolation(Math.toRadians(30))
+//                    .build();
+//        }else {
+//            firstPath = follower.pathBuilder()
+//                    .addPath(new BezierLine(follower.getPose(), new Pose(-48, -13.5)))
+//                    .setConstantHeadingInterpolation(Math.toRadians(150))
+//                    .build();
+//
+//            secondPath = follower.pathBuilder()
+//                    .addPath(new BezierLine(new Pose(-48, -13.5), new Pose(-55.5, -13.5)))
+//                    .setConstantHeadingInterpolation(Math.toRadians(150))
+//                    .build();
+//        }
+//    }
 
-            secondPath = follower.pathBuilder()
-                    .addPath(new BezierLine(new Pose(48, -13.5), new Pose(55.5, -13.5)))
-                    .setConstantHeadingInterpolation(Math.toRadians(30))
-                    .build();
-        }else {
-            firstPath = follower.pathBuilder()
-                    .addPath(new BezierLine(follower.getPose(), new Pose(-48, -13.5)))
-                    .setConstantHeadingInterpolation(Math.toRadians(150))
-                    .build();
-
-            secondPath = follower.pathBuilder()
-                    .addPath(new BezierLine(new Pose(-48, -13.5), new Pose(-55.5, -13.5)))
-                    .setConstantHeadingInterpolation(Math.toRadians(150))
-                    .build();
-        }
-    }
-
-    public void goToGate() {
-        follower.setMaxPower(1.0);
-        follower.followPath(firstPath, 1.0, true);
-    }
-
-    public void openGate() {
-        follower.setMaxPower(0.7);
-        follower.followPath(secondPath, 0.7, true);
-    }
+//    public void goToGate() {
+//        follower.setMaxPower(1.0);
+//        follower.followPath(firstPath, 1.0, true);
+//    }
+//
+//    public void openGate() {
+//        follower.setMaxPower(0.7);
+//        follower.followPath(secondPath, 0.7, true);
+//    }
 
     public void gamepadDrive(double maxSpeed) {
         selectGamepad();
@@ -172,33 +172,33 @@ public class Drivebase {
 
     public void drive(double maxSpeed) {
         selectGamepad();
-        if (isPathFollowing() && (Math.abs(currentGamepad.left_stick_y) > 0.1 ||
-                Math.abs(currentGamepad.left_stick_x) > 0.1 ||
-                Math.abs(currentGamepad.right_stick_x) > 0.1)) {
-            cancelPathFollowing();
-        }
+//        if (isPathFollowing() && (Math.abs(currentGamepad.left_stick_y) > 0.1 ||
+//                Math.abs(currentGamepad.left_stick_x) > 0.1 ||
+//                Math.abs(currentGamepad.right_stick_x) > 0.1)) {
+//            cancelPathFollowing();
+//        }
 
-        if (isPathFollowing()) {
-            follower.update();
-            if (drivebaseState == DrivebaseState.goToGate) {
-                goToGate();
-                drivebaseState = DrivebaseState.openGate;
-                pathStarted = false;
-            } else if (drivebaseState == DrivebaseState.openGate) {
-                if (follower.isBusy()) pathStarted = true;
-                if (pathStarted && !follower.isBusy()) {
-                    openGate();
-                    drivebaseState = DrivebaseState.goTeleOp;
-                    pathStarted = false;
-                }
-            } else if (drivebaseState == DrivebaseState.goTeleOp) {
-                if (follower.isBusy()) pathStarted = true;
-                if (pathStarted && !follower.isBusy()) {
-                    cancelPathFollowing();
-                }
-            }
-            return;
-        }
+//        if (isPathFollowing()) {
+//            follower.update();
+//            if (drivebaseState == DrivebaseState.goToGate) {
+//                goToGate();
+//                drivebaseState = DrivebaseState.openGate;
+//                pathStarted = false;
+//            } else if (drivebaseState == DrivebaseState.openGate) {
+//                if (follower.isBusy()) pathStarted = true;
+//                if (pathStarted && !follower.isBusy()) {
+//                    openGate();
+//                    drivebaseState = DrivebaseState.goTeleOp;
+//                    pathStarted = false;
+//                }
+//            } else if (drivebaseState == DrivebaseState.goTeleOp) {
+//                if (follower.isBusy()) pathStarted = true;
+//                if (pathStarted && !follower.isBusy()) {
+//                    cancelPathFollowing();
+//                }
+//            }
+//            return;
+//        }
 
         if (isDriverOriented)
             driverOrientedGamepadDrive(maxSpeed);

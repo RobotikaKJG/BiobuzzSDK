@@ -13,13 +13,12 @@ public class RightTriggerControl {
             case forward:
                 IntakeStates.setIntakeMotorState(IntakeMotorStates.forward);
                 IntakeStates.setTransferMotorState(TransferMotorStates.forward);
-                IntakeStates.setLockServoState(LockServoStates.lock);
                 break;
             case stop:
                 IntakeStates.setIntakeMotorState(IntakeMotorStates.idle);
                 IntakeStates.setTransferMotorState(TransferMotorStates.idle);
                 IntakeStates.setLockServoState(LockServoStates.lock);
-                   break;
+                break;
             case idle:
                 break;
         }
