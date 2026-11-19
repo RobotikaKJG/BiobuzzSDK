@@ -123,7 +123,7 @@ public class OuttakeSpeedTeleOp extends LinearOpMode {
             dependencies.motorControl.setMotors(MotorConstants.transfer);
 
             // Sync with global OuttakeConstants
-            OuttakeConstants.outtakeSpeed = outtakeSpeed;
+//            OuttakeConstants.outtakeSpeed = outtakeSpeed;
 
             double activeTargetTPS = isSpinning ? outtakeSpeed : 0.0;
 

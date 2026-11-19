@@ -22,11 +22,13 @@ public class OuttakeMotorControl {
 
     public void updateStates() {
         switch (OuttakeStates.getOuttakeMotorState()) {
-            case forwardClose:
-                motorControl.setMotorRPM(MotorConstants.outtake, OuttakeConstants.outtakeSpeed);
+            case forward:
+                motorControl.setMotorRPM(MotorConstants.outtake1, OuttakeConstants.outtake1Speed);
+                motorControl.setMotorRPM(MotorConstants.outtake2, OuttakeConstants.outtake2Speed);
                 break;
             case backward:
-                motorControl.setMotorRPM(MotorConstants.outtake, -OuttakeConstants.outtakeSpeed);
+                motorControl.setMotorRPM(MotorConstants.outtake1, -OuttakeConstants.outtake1Speed);
+                motorControl.setMotorRPM(MotorConstants.outtake2, -OuttakeConstants.outtake2Speed);
                 break;
             case idle:
                 motorControl.setMotorRPM(MotorConstants.outtake, 0);

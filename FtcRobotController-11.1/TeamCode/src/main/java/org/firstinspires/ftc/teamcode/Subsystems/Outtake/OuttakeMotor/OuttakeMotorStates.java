@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.Subsystems.Outtake.OuttakeMotor;
 
 public enum OuttakeMotorStates {
-    forwardClose,
+    forward,
     backward,
     idle
 }
